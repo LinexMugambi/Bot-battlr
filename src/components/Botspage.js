@@ -22,3 +22,19 @@ function castBots(id,cast=true){
     setBots(bots.filter(bot => bot.id !== deletedBotId))
   }
  
+  return (
+    <div>
+      <YourBotArmy bots={bots.filter(bot=>bot.isCast)}
+      handleDelete={deleteBots}
+      handleClick={unCastBots}
+
+     />
+      <BotCollection bots={bots} 
+     handleDelete={deleteBots}
+      handleClick={castBots}
+      />
+    </div>
+  )
+}
+
+export default BotsPage;
