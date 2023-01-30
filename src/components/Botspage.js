@@ -7,10 +7,11 @@ function BotsPage() {
   const [bots, setBots] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/bots")
+    fetch("https://linexmugambi.github.io/db/db.json")
       .then((response) => response.json())
-      .then((bots)=>setBots(bots));
+      .then((data)=>setBots(data.bots));
   }, []);
+
 function castBots(id,cast=true){
  setBots(bots.map(bot=> id===bot.id ?{...bot, isCast: cast}: bot))
 }
@@ -22,6 +23,8 @@ function castBots(id,cast=true){
     setBots(bots.filter(bot => bot.id !== deletedBotId))
   }
  
+
+
   return (
     <div>
       <YourBotArmy bots={bots.filter(bot=>bot.isCast)}
